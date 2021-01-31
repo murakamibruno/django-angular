@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   baseUrl = 'http://localhost:8000/'
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  
+
   constructor(private http: HttpClient) {}
 
   getAllMembers() : Observable<any> {

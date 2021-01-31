@@ -11,7 +11,7 @@ import { ApiService } from './api.service';
 export class MembersDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private api: ApiService) { }
-  selectedMember = {name: '', surname: ''};
+  selectedMember = {id: 0, name: '', surname: '', phone: ''};
   selectedId;
 
   ngOnInit() {
@@ -23,8 +23,18 @@ export class MembersDetailComponent implements OnInit {
   }
 
   loadMember(id) {
-    console.log(id);
     this.api.getMember(id).subscribe(
+      data => {
+        this.selectedMember = data;
+      },
+      error => {
+        console.log("Aconteceu um erro", error.message);
+      }
+    );
+  }
+
+  update() {
+    this.api.updateMember(this.selectedMember).subscribe(
       data => {
         this.selectedMember = data;
       },
