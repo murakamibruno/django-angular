@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from './api.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class AppComponent {
     {name: 'Member 03', id: 3, surname: 'Beltrano', photo: 'http://www.minhapp.com/foto3'},
   ];
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
     this.getMembers();
   }
 
@@ -32,15 +33,7 @@ export class AppComponent {
   };
   
   memberClicked = (member) => {
-    this.api.getMember(member.id).subscribe(
-      data => {
-        console.log(data);
-        this.selectedMember = data;
-      },
-      error => {
-        console.log("Aconteceu um erro", error.message);
-      }
-    );
+    this.router.navigate(['member-detail', member.id])
   }
 
 }
