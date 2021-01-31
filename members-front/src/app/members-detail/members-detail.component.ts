@@ -18,7 +18,7 @@ export class MembersDetailComponent implements OnInit {
     private appComponent: AppComponent
     ) { }
     
-  selectedMember = {id: 0, name: '', surname: '', phone: ''};
+  selectedMember = {id: 0, name: '', surname: '', phone: '', photo:''};
   selectedId;
 
   ngOnInit() {
